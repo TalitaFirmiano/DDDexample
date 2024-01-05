@@ -15,6 +15,7 @@ namespace Domain.Enums
         Sedan = 5,
         Hatch = 6, 
         Esportivos = 7
+        Suv=8,
 
 
 

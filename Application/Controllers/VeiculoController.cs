@@ -1,4 +1,5 @@
 ﻿using Domain.Command;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -10,18 +11,29 @@ namespace Application.Controllers
     [ApiController]
     public class VeiculoController : ControllerBase
     {
-        [HttpPost("Cadastrar Veiculo")]
-        public IActionResult PostAsync([FromBody] VeiculoCommand command)
-        {
-            return Ok();
-        }
+        private readonly IVeiculoService _veiculoService;
         
-        public IActionResult SimularAluguel()
+        public VeiculoController(IVeiculoService veiculoService)
+        {
+            _veiculoService = veiculoService;
+        }
+
+        [HttpPost]
+        [Route("Cadastrar Veiculo")]
+        public async Task <IActionResult> PostAsync([FromBody] VeiculoCommand command)
+        {
+            await _veiculoService.PostAsync(command);
+            return Ok();
+        }
+        [HttpPost]
+        [Route("SimularAluguel")]
+        public IActionResult GetAsync()
         {
             return Ok();
-
         }
-        public IActionResult Alugar()
+        [HttpPost]
+        [Route("Alugar")]
+        public IActionResult PostAsync()
         {
             return Ok();
         }
