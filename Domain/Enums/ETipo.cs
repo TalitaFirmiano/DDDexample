@@ -14,7 +14,7 @@ namespace Domain.Enums
         Caminhao = 4,
         Sedan = 5,
         Hatch = 6, 
-        Esportivos = 7
+        Esportivos = 7,
         Suv=8,
 
 
