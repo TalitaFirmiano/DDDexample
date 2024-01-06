@@ -16,9 +16,10 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
-        public Task PostAsync(VeiculoCommand command)
+        public async Task <string> PostAsync(VeiculoCommand command)
         {
-            if (command == null) throw new ArgumentNullException();
+            if (command == null)
+                return "Todos os campos são obrigatorios";
 
             // To do 
             //Incluir validação, só podem cadastrar veiculos com até 5 anos de uso
@@ -26,11 +27,11 @@ namespace Service.Services
             // To do 
             // Incluir somente carro do tipo SUV, Sedan e Hatch
 
-            int AnoAtual= DateTime.Now.Year;
+            int anoAtual = DateTime.Now.Year;
 
-            if ((AnoAtual - command.AnoFabricacao )<5);
+            if ((anoAtual - command.AnoFabricacao) < 5)
             {
-                Console.WriteLine("O veiculo esta dentro dos requisitos");
+                return "O ano do veiculo é menor que o permitido";
             }
 
             if (command.TipoVeiculo == ETipo.Suv
@@ -38,20 +39,15 @@ namespace Service.Services
              && command.TipoVeiculo != ETipo.Sedan
             )
             {
-                Console.WriteLine("Não Cadastrou o veiculo");
-            throw new ArgumentNullException();
-            }
-            else
-            {
-                Console.WriteLine("Cadastrou o veiculo");
+                return "O tipo do veiculo não é permitido";
             }
 
-            throw new NotImplementedException();
+            return "Cadastro realizado com sucesso";
         }
-
         public void PostAsync()
         {
             throw new NotImplementedException();
         }
+
     }
 }

@@ -4,7 +4,7 @@ namespace Domain
 {
     public interface IVeiculoService
     {
-        void PostAsync(VeiculoCommand command);
+        Task <string> PostAsync(VeiculoCommand command);
         void PostAsync();
         void GetAsync();
     }

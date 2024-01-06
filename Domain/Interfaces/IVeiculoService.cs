@@ -14,7 +14,7 @@ namespace Domain.Interfaces
 
 
         void GetAsync();
-        Task PostAsync(VeiculoCommand command);
+        Task<string> PostAsync(VeiculoCommand command);
         void PostAsync();
 
 
