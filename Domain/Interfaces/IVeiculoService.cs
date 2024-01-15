@@ -13,10 +13,13 @@ namespace Domain.Interfaces
         // não é implementação de nada
 
 
-        void GetAsync();
+
         Task<string> PostAsync(VeiculoCommand command);
         void PostAsync();
 
-
+        void GetAsync();
+        Task<IEnumerable<VeiculoCommand>> GetAluguelDisponivelAsync();
     }
+
+    
 }

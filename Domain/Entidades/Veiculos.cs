@@ -16,6 +16,7 @@ namespace Domain.Entidades
         public string Estado { get; set; } 
         public EMontadora EMarca {get;set;} 
         public bool Alugado { get; set; } = false;
+        public bool AluguelDisponivel { get; set; } = false;
 
     }
 }
